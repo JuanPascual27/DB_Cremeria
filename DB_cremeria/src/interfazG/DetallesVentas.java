@@ -20,15 +20,17 @@ public class DetallesVentas extends javax.swing.JFrame {
     AdminDetalleVentas e;
     Connection cn;
     Conexion con=new Conexion();
+    static char usuario;
     /**
      * Creates new form DetallesVentas
      */
-    public DetallesVentas(String IdV) {
+    public DetallesVentas(String IdV, char c) {
         initComponents();
         Id = IdV;
         e= new AdminDetalleVentas(Id);
         iniciar();
         jTextField1.setText(Id);
+        usuario = c;
     }
     private void Limpiar(JTable tablas){
         while(tablas.getRowCount()>0){
@@ -294,7 +296,7 @@ public class DetallesVentas extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        DetallesVentas Dven = new DetallesVentas(Id);
+        DetallesVentas Dven = new DetallesVentas(Id, usuario);
         Dven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -332,8 +334,8 @@ public class DetallesVentas extends javax.swing.JFrame {
         }*/
         EditarVenta();
         this.dispose();
-          Ventas ven = new Ventas();
-                    ven.setVisible(true);
+        Ventas ven = new Ventas(usuario);
+        ven.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -366,7 +368,7 @@ public class DetallesVentas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetallesVentas(Id).setVisible(true);
+                new DetallesVentas(Id, usuario).setVisible(true);
             }
         });
     }

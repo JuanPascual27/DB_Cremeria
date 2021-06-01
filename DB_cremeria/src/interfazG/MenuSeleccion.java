@@ -10,12 +10,24 @@ package interfazG;
  * @author tulre
  */
 public class MenuSeleccion extends javax.swing.JFrame {
-
+    char usuario;
     /**
      * Creates new form MenuSeleccion
      */
     public MenuSeleccion() {
         initComponents();
+    }
+    
+    public MenuSeleccion(char c) {
+        initComponents();
+        usuario = c;
+        if(c == 'v'){
+            jMenuItem1.setEnabled(false);
+            jMenuItem2.setEnabled(false);
+            jMenuItem4.setEnabled(false);
+            jMenuItem5.setEnabled(false);
+            jButton1.setEnabled(false);
+        }
     }
 
     /**
@@ -166,7 +178,7 @@ public class MenuSeleccion extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         super.dispose();
-        Ventas ve = new Ventas();
+        Ventas ve = new Ventas(usuario);
         ve.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -180,8 +192,6 @@ public class MenuSeleccion extends javax.swing.JFrame {
         super.dispose();
         Productos pro = new Productos();
         pro.setVisible(true);
-        
-        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -194,7 +204,7 @@ public class MenuSeleccion extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         super.dispose();
-        Clientes c = new Clientes();
+        Clientes c = new Clientes(usuario);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 

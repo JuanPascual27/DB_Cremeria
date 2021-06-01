@@ -17,10 +17,17 @@ public class Ventas extends javax.swing.JFrame {
     AdminVentas e= new AdminVentas();
     Connection cn;
     Conexion con=new Conexion();
+    char usuario;
     
     public Ventas() {
         initComponents();
         iniciar();
+    }
+    
+    public Ventas(char c) {
+        initComponents();
+        iniciar();
+        usuario = c;
     }
     
     private void Limpiar(JTable tablas){
@@ -235,13 +242,13 @@ public class Ventas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Producto Registrado con Éxito ");
                
         this.dispose();
-        DetallesVentas vent = new DetallesVentas(IdV);
+        DetallesVentas vent = new DetallesVentas(IdV,usuario);
         vent.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         this.dispose();
-        MenuSeleccion bi = new MenuSeleccion();
+        MenuSeleccion bi = new MenuSeleccion(usuario);
         bi.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -265,7 +272,7 @@ public class Ventas extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        Ventas ven = new Ventas();
+        Ventas ven = new Ventas(usuario);
         ven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 

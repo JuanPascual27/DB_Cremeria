@@ -159,17 +159,17 @@ public class IngresarSistema extends javax.swing.JFrame {
             if(usuario.equals("Juan Pascual") && password.equals("juan1234")){
                 JOptionPane.showMessageDialog(null, "Bienvenido Administrador");
                 super.dispose();
-                MenuSeleccion ms = new MenuSeleccion();
+                MenuSeleccion ms = new MenuSeleccion('a');
                 ms.setVisible(true);
-            }else if(usuario.equals(" ") && password.equals(" ")){
+            }else if(usuario.equals("Jorge Toscano") && password.equals("jorge1234")){
                 JOptionPane.showMessageDialog(null, "Bienvenido Administrador");
                 super.dispose();
-                MenuSeleccion ms = new MenuSeleccion();
+                MenuSeleccion ms = new MenuSeleccion('a');
                 ms.setVisible(true);
             }else if(usuario.equals("Luis Garcia") && password.equals("luis1234")){
                 JOptionPane.showMessageDialog(null, "Bienvenido Administrador");
                 super.dispose();
-                MenuSeleccion ms = new MenuSeleccion();
+                MenuSeleccion ms = new MenuSeleccion('a');
                 ms.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Usuario o Password incorrecto");
@@ -185,7 +185,7 @@ public class IngresarSistema extends javax.swing.JFrame {
             if(!nombreV.toString().equals("")) {
                 JOptionPane.showMessageDialog(null, "Bienvenido Vendedor " + nombreV);
                 super.dispose();
-                MenuSeleccion ms = new MenuSeleccion();
+                MenuSeleccion ms = new MenuSeleccion('v');
                 ms.setVisible(true);
             }else {
                 JOptionPane.showMessageDialog(null, "Vendedor no encontrado");

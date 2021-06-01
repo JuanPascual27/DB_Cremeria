@@ -19,12 +19,19 @@ public class Clientes extends javax.swing.JFrame {
     AdminClientes e= new AdminClientes();
     Connection cn;
     Conexion con=new Conexion();
+    char usuario;
     /**
      * Creates new form Clientes
      */
     public Clientes() {
         initComponents();
         iniciar();
+    }
+    
+    public Clientes(char c) {
+        initComponents();
+        iniciar();
+        usuario = c;
     }
     
     private void Limpiar(JTable tablas){
@@ -356,7 +363,7 @@ public class Clientes extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        Clientes cli = new Clientes();
+        Clientes cli = new Clientes(usuario);
         cli.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -385,8 +392,8 @@ public class Clientes extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         this.dispose();
-          MenuSeleccion bi = new MenuSeleccion();
-                    bi.setVisible(true);
+        MenuSeleccion bi = new MenuSeleccion(usuario);
+        bi.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
