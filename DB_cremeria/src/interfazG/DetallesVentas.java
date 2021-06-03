@@ -20,15 +20,17 @@ public class DetallesVentas extends javax.swing.JFrame {
     AdminDetalleVentas e;
     Connection cn;
     Conexion con=new Conexion();
+    static char usuario;
     /**
      * Creates new form DetallesVentas
      */
-    public DetallesVentas(String IdV) {
+    public DetallesVentas(String IdV, char c) {
         initComponents();
         Id = IdV;
         e= new AdminDetalleVentas(Id);
         iniciar();
         jTextField1.setText(Id);
+        usuario = c;
     }
     private void Limpiar(JTable tablas){
         while(tablas.getRowCount()>0){
@@ -294,18 +296,23 @@ public class DetallesVentas extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        DetallesVentas Dven = new DetallesVentas(Id);
+        DetallesVentas Dven = new DetallesVentas(Id, usuario);
         Dven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String IdV = jTextField1.getText();
-        String IdP = jTextField2.getText();
-        int band = e.EliminarDVenta(IdV, IdP);
-        if (band == 0)
-            JOptionPane.showMessageDialog(null, "Producto NO registrado, Revise por favor");
-           else
-            JOptionPane.showMessageDialog(null, "Producto Registrado con Éxito ");
+        int res = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?", "!Alerta¡",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+        if(res == JOptionPane.YES_OPTION) {
+            String IdV = jTextField1.getText();
+            String IdP = jTextField2.getText();
+            int band = e.EliminarDVenta(IdV, IdP);
+            if (band == 0)
+            JOptionPane.showMessageDialog(null, "DetalleVenta NO eliminado, Revise por favor");
+            else
+            JOptionPane.showMessageDialog(null, "DetalleVenta Eliminado con Éxito ");
+        }
+        else
+            JOptionPane.showMessageDialog(null, "DetalleVenta NO Eliminado");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -332,8 +339,8 @@ public class DetallesVentas extends javax.swing.JFrame {
         }*/
         EditarVenta();
         this.dispose();
-          Ventas ven = new Ventas();
-                    ven.setVisible(true);
+        Ventas ven = new Ventas(usuario);
+        ven.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -366,7 +373,7 @@ public class DetallesVentas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetallesVentas(Id).setVisible(true);
+                new DetallesVentas(Id, usuario).setVisible(true);
             }
         });
     }

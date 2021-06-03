@@ -19,12 +19,19 @@ public class Clientes extends javax.swing.JFrame {
     AdminClientes e= new AdminClientes();
     Connection cn;
     Conexion con=new Conexion();
+    char usuario;
     /**
      * Creates new form Clientes
      */
     public Clientes() {
         initComponents();
         iniciar();
+    }
+    
+    public Clientes(char c) {
+        initComponents();
+        iniciar();
+        usuario = c;
     }
     
     private void Limpiar(JTable tablas){
@@ -356,17 +363,22 @@ public class Clientes extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        Clientes cli = new Clientes();
+        Clientes cli = new Clientes(usuario);
         cli.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String IdR = jTextField1.getText();
-        int band = e.EliminarCliente(IdR);
-        if (band == 0)
-            JOptionPane.showMessageDialog(null, "Producto NO registrado, Revise por favor");
-           else
-            JOptionPane.showMessageDialog(null, "Producto Registrado con Éxito ");
+        int res = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?", "!Alerta¡",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+        if(res == JOptionPane.YES_OPTION) {
+            String IdR = jTextField1.getText();
+            int band = e.EliminarCliente(IdR);
+            if (band == 0)
+            JOptionPane.showMessageDialog(null, "Cliente NO eliminado, Revise por favor");
+            else
+            JOptionPane.showMessageDialog(null, "Cliente Eliminado con Éxito ");
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Cliente NO Eliminado");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -385,8 +397,8 @@ public class Clientes extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         this.dispose();
-          MenuSeleccion bi = new MenuSeleccion();
-                    bi.setVisible(true);
+        MenuSeleccion bi = new MenuSeleccion(usuario);
+        bi.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
