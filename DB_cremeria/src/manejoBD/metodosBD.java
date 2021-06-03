@@ -157,29 +157,33 @@ public class metodosBD {
         return band;
     }
     /*
-    //metodo 1 para validar con parametros (tipo de dato)
-    public boolean validar(Object dato, String tipo, boolean negativos) {
-        
+    //metodo 1 para validar con parametros (ato)
+    public boolean validarCadena(String dato, int tamaño) {
+        boolean valido = false;
+        if(dato.lenght() <= tamaño)
+            valido = true;
+        return valido;
     }
     
-    //metodo 2 para validar con parametros (tipo de dato, tamaño)
-    public boolean validar(Object dato, String tipo, int tamaño) {
-        String d = dato.toString();
+    public boolean validarFecha(String dato) {
+        boolean valido = false;
+        if(dato.lenght() == 10)
+            if((dato.charAt(2) == '/' || dato.charAt(2) == '-') && (dato.charAt(5) == '/' || dato.charAt(5) == '-'))
+                valido = true;
+        return valido;
+    }
+    
+    //metodo 2 para validar con parametros (dato)
+    public boolean validarEntero(String dato) {
         int num;
-        boolean b = false;
-        if(tipo.equals("int")) {
-            try {
-                num = Integer.parseInt(d);
-                if
-            }catch(NumberFormatException e) {
-                
-            }
+        boolean valido = false;
+        try {
+            num = Integer.parseInt(d);
+            valido = true;
+        }catch(NumberFormatException e) {
+            valido = false;
         }
-        return b;
+        return valido;
     }
-    
-    //metodo 3 para validar con parametros (tipo de dato, formato)
-    public boolean validar(Object dato, String tipo, String formato) {
-        
-    }*/
+    */
 }
