@@ -261,7 +261,7 @@ public class Ventas extends javax.swing.JFrame {
             {
               jTextField1.setText("");
               jTextField2.setText("");
-             JOptionPane.showMessageDialog(null, "Usuario NO encontrado");
+             JOptionPane.showMessageDialog(null, "Venta NO encontrada");
             }
            else
            {
@@ -271,18 +271,32 @@ public class Ventas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int res = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?", "!Alerta¡",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+        if(res == JOptionPane.YES_OPTION) {
+            this.dispose();
+            Ventas ven = new Ventas(usuario);
+            ven.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "NO ha sido posible elimimar");
+        }
         this.dispose();
         Ventas ven = new Ventas(usuario);
         ven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String IdV = jTextField1.getText();
-        int band = e.EliminarVenta(IdV);
-        if (band == 0)
-            JOptionPane.showMessageDialog(null, "Producto NO registrado, Revise por favor");
-           else
-            JOptionPane.showMessageDialog(null, "Producto Registrado con Éxito ");
+        int res = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?", "!Alerta¡",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+        if(res == JOptionPane.YES_OPTION) {
+            String IdV = jTextField1.getText();
+            int band = e.EliminarVenta(IdV);
+            if (band == 0)
+            JOptionPane.showMessageDialog(null, "Venta NO eliminada, Revise por favor");
+            else
+            JOptionPane.showMessageDialog(null, "Venta Eliminada con Éxito ");
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Venta NO Eliminada");     
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
